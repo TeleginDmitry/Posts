@@ -1,0 +1,26 @@
+.form {
+	background-color: #5a5c66;
+	padding: 20px;
+	max-width: 600px;
+
+	.label {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		.input {
+			width: 100%;
+			background-color: transparent;
+			color: #ffffff;
+			font-size: 17px;
+			line-height: 20px;
+
+			&::placeholder {
+				color: #b2b7bf;
+			}
+		}
+
+		.search {
+			cursor: pointer;
+		}
+	}
+}

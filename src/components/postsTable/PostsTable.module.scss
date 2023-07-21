@@ -1,0 +1,44 @@
+.wrapper {
+	overflow-x: auto;
+	.table {
+		width: 100%;
+		margin-top: 30px;
+		border-collapse: collapse;
+		min-width: 768px;
+
+		th,
+		td {
+			padding: 20px;
+		}
+
+		thead {
+			tr {
+				background-color: #474955;
+				color: #ffffff;
+				text-align: left;
+				th {
+					text-wrap: nowrap;
+					cursor: pointer;
+
+					svg {
+						margin-left: 30px;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				border: 1px solid #e3e6ec;
+
+				td {
+					border-right: 1px solid #e3e6ec;
+
+					&:first-child {
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}
