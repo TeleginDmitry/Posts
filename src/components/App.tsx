@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react'
 import Search from './search/Search'
 import styles from './App.module.scss'
 import PostsTable from './postsTable/PostsTable'
-import { IGetPosts, IPost } from 'interfaces/post.interface'
+import { IGetPosts, IPost, TypeOrder } from 'interfaces/post.interface'
 import useActions from 'hooks/useActions'
-import { ORDER_PARAM, SEARCH_PARAM, SORT_PARAM } from 'config/index.config'
+import {
+	ORDER_PARAM,
+	SEARCH_PARAM,
+	SORT_PARAM,
+	START_PAGE,
+} from 'config/index.config'
 import Pagination from './pagination/Pagination'
 
 const App = () => {
 	const searchParams = new URLSearchParams(window.location.search)
 
-	const orderParam = searchParams.get(ORDER_PARAM) as 'asc' | 'desc'
+	const orderParam = searchParams.get(ORDER_PARAM) as TypeOrder
 	const sortParam = searchParams.get(SORT_PARAM) as keyof IPost
 	const searchParam = searchParams.get(SEARCH_PARAM)
 
-	const [page, setPage] = useState(1)
-	const [order, setOrder] = useState<'asc' | 'desc'>(orderParam || 'asc')
+	const [page, setPage] = useState(START_PAGE)
+	const [order, setOrder] = useState<TypeOrder>(orderParam || 'asc')
 	const [sortType, setSortType] = useState<keyof IPost>(sortParam || 'id')
 	const [searchValue, setSearchValue] = useState(searchParam || '')
 
@@ -29,7 +34,7 @@ const App = () => {
 		}
 
 		if (searchValue) {
-			request['q'] = searchValue
+			request[SEARCH_PARAM] = searchValue
 		}
 
 		getPosts(request)

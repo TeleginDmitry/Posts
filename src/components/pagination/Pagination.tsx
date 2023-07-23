@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useTypedSelector } from 'hooks/useTypedSelector'
 import { selectCount } from 'store/posts/Posts.selectors'
 import styles from './Pagination.module.scss'
-import { LIMIT } from 'config/index.config'
+import { LIMIT, START_PAGE } from 'config/index.config'
 
 interface IPagination {
 	page: number
@@ -16,7 +16,7 @@ const Pagination = ({ page, setPage }: IPagination) => {
 	useEffect(() => {
 		const result = []
 		const countPages = Math.ceil(count / LIMIT)
-		for (let i = 1; i <= countPages; i++) {
+		for (let i = START_PAGE; i <= countPages; i++) {
 			result.push(i)
 		}
 		setPagesList(result)

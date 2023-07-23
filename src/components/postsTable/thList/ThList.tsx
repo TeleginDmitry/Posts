@@ -1,8 +1,8 @@
 import React from 'react'
 import { ReactComponent as Line } from '@assets/icons/line.svg'
 import { thList } from './data'
-import { ORDER_PARAM, SORT_PARAM } from 'config/index.config'
-import { changeLink } from 'utils/changeLink/ChangeLink'
+import { ORDER_PARAM, SORT_PARAM, START_PAGE } from 'config/index.config'
+import { changeLink } from 'utils/changeLink/changeLink'
 import { IPost } from 'interfaces/post.interface'
 
 interface IThList {
@@ -22,8 +22,8 @@ const ThList = ({
 }: IThList) => {
 	const searchParams = new URLSearchParams(window.location.search)
 
-	function onClickTh(type: keyof IPost) {
-		setPage(1)
+	function handleSort(type: keyof IPost) {
+		setPage(START_PAGE)
 
 		searchParams.set(SORT_PARAM, type)
 
@@ -46,8 +46,8 @@ const ThList = ({
 		<>
 			{thList.map(({ title, type, id }) => {
 				return (
-					<th onClick={() => onClickTh(type as keyof IPost)} key={id}>
-						{title}{' '}
+					<th onClick={() => handleSort(type)} key={id}>
+						{title}
 						<Line
 							style={{
 								transform:

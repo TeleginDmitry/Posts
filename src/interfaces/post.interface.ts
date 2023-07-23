@@ -5,11 +5,13 @@ export interface IPost {
 	userId: number
 }
 
+export type TypeAllFields = keyof Omit<IPost, 'userId'>
+
 export interface IGetPosts {
 	_limit: number
 	_page: number
 	_sort?: keyof IPost
-	_order?: 'asc' | 'desc'
+	_order?: TypeOrder
 	q?: string
 }
 
@@ -22,3 +24,5 @@ export interface IGetPostsThunk {
 	count: number
 	posts: IPost[]
 }
+
+export type TypeOrder = 'asc' | 'desc'

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Search.module.scss'
 import { ReactComponent as SearchIcon } from '@assets/icons/search.svg'
-import { SEARCH_PARAM } from 'config/index.config'
-import { changeLink } from 'utils/changeLink/ChangeLink'
+import { SEARCH_PARAM, START_PAGE } from 'config/index.config'
+import { changeLink } from 'utils/changeLink/changeLink'
 
 interface ISearch {
 	setSearchValue: React.Dispatch<React.SetStateAction<string>>
@@ -32,10 +32,9 @@ const Search = ({ setSearchValue, setPage }: ISearch) => {
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
-			console.log(inputValue)
 			setSearchValue(inputValue)
 
-			setPage(1)
+			setPage(START_PAGE)
 		}, 300)
 
 		return () => {

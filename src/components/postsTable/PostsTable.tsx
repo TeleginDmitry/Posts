@@ -1,13 +1,13 @@
 import styles from './PostsTable.module.scss'
 import ThList from './thList/ThList'
 import PostsList from './postsList/PostsList'
-import { IPost } from 'interfaces/post.interface'
+import { IPost, TypeOrder } from 'interfaces/post.interface'
 
 interface IPostsTable {
-	order: 'asc' | 'desc'
+	order: TypeOrder
 	sortType: keyof IPost
 	setPage: React.Dispatch<React.SetStateAction<number>>
-	setOrder: React.Dispatch<React.SetStateAction<'asc' | 'desc'>>
+	setOrder: React.Dispatch<React.SetStateAction<TypeOrder>>
 	setSortType: React.Dispatch<React.SetStateAction<keyof IPost>>
 }
 

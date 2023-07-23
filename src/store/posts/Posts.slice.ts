@@ -3,7 +3,7 @@ import { IGetPostsThunk, IPost } from 'interfaces/post.interface'
 import { getPosts } from './Posts.actions'
 
 interface CounterState {
-	posts: IPost[]
+	posts: IPost[] | null[]
 	count: number
 	error: string | null
 	isLoading: boolean
@@ -15,7 +15,6 @@ const initialState: CounterState = {
 	count: 0,
 	isLoading: false,
 	isError: false,
-
 	error: null,
 }
 
@@ -52,7 +51,5 @@ export const PostsSlice = createSlice({
 function isLoadingAction(action: AnyAction) {
 	return action.type.endsWith('pending')
 }
-
-export const {} = PostsSlice.actions
 
 export default PostsSlice.reducer
